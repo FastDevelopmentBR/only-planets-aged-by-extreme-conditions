@@ -24,7 +24,7 @@
 <p>Utilize o editor de texto da sua preferência.</p>
 <br/>
 <p>Você verá a seguinte configuração padrão:</p>
-```
+```xml
 <OnlyAgedUnpoweredGrids>false</OnlyAgedUnpoweredGrids>
 <AgingDamagesBlocks>false</AgingDamagesBlocks>
 <NoMercy>false</NoMercy>
