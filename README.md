@@ -4,7 +4,7 @@
 <p>As grids dentro de SafeZones com dano desativado não envelhecerão.</p>
 <p>Scripts apenas do lado do servidor! (Deve funcionar em servidores dedicados Xbox, mas não testado)</p>
 <br/>
-<p><em>!!AVISO!! Este mod ainda é um tanto experimental. Bugs são esperados, por favor reporte se encontrados. Tenha também cuidado ao adicionar isso ao seu mundo já construído sem salvamentos de backup.*</em></p>
+<p><em>!!AVISO!! Este mod ainda é um tanto experimental. Bugs são esperados, por favor reporte se encontrados. Tenha também cuidado ao adicionar isso ao seu mundo já construído sem salvamentos de backup.</em></p>
 
 ## F.A.Q
 
@@ -17,7 +17,11 @@
 ## Configuração
 
 <p>Este mod pode ser configurado por jogo salvo. Crie e salve o jogo com este mod adicionado. Abra o diretório de armazenamento do seu save em :</p>
-`C:\Users\<UserName>\AppData\Roaming\SpaceEngineers\Saves\<RandomNumber>\<SaveGameName>\Storage\<RandomNumber>.sbm_ExtremeConditions`
+
+```
+C:\Users\<UserName>\AppData\Roaming\SpaceEngineers\Saves\<RandomNumber>\<SaveGameName>\Storage\<RandomNumber>.sbm_ExtremeConditions
+```
+
 <p>O arquivo <strong>config.xml</strong> está dentro da pasta, contendo uma configuração padrão.</p>
 <p><strong>Certifique-se de editar a versão mais recente se houver mais de uma!</strong></p>
 <p>Também é necessário reconfigurar sempre que o mod for atualizado com alterações nas opções de configuração.</p>
