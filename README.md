@@ -16,13 +16,10 @@
 
 ## Configuração
 
-<p>Este mod pode ser configurado por jogo salvo:</p>
-<br/>
-<p>Crie e salve o jogo com este mod adicionado.</p>
-<p>Abra o diretório de armazenamento do seu save:</p>
+<p>Este mod pode ser configurado por jogo salvo. Crie e salve o jogo com este mod adicionado. Abra o diretório de armazenamento do seu save em :</p>
 `C:\Users\<UserName>\AppData\Roaming\SpaceEngineers\Saves\<RandomNumber>\<SaveGameName>\Storage\<RandomNumber>.sbm_ExtremeConditions`
-<p>O arquivo **config.xml** está dentro da pasta, contendo uma configuração padrão.</p>
-<p>**Certifique-se de editar a versão mais recente se houver mais de uma!**</p>
+<p>O arquivo <strong>config.xml</strong> está dentro da pasta, contendo uma configuração padrão.</p>
+<p><strong>Certifique-se de editar a versão mais recente se houver mais de uma!</strong></p>
 <p>Também é necessário reconfigurar sempre que o mod for atualizado com alterações nas opções de configuração.</p>
 <p>Utilize o editor de texto da sua preferência.</p>
 <br/>
