@@ -24,51 +24,52 @@
 <p>Utilize o editor de texto da sua preferência.</p>
 <br/>
 <p>Você verá a seguinte configuração padrão:</p>
+
 ```xml
-<OnlyAgedUnpoweredGrids>false</OnlyAgedUnpoweredGrids>
-<AgingDamagesBlocks>false</AgingDamagesBlocks>
-<NoMercy>false</NoMercy>
-<Planets>
-  <Planet>
-    <PlanetNameContains>Earth</PlanetNameContains>
-    <AgingRate>300</AgingRate>
-    <OnlyAgedUnpoweredGrids>true</OnlyAgedUnpoweredGrids>
-  </Planet>
-  <Planet>
-    <PlanetNameContains>Alien</PlanetNameContains>
-    <AgingRate>180</AgingRate>
-    <AgingStages>
-      <string>Mossy_Armor</string>
-      <string>Rusty_Armor</string>
-      <string>Heavy_Rust_Armor</string>
-    </AgingStages>
-  </Planet>
-  <Planet>
-    <PlanetNameContains>Triton</PlanetNameContains>
-    <AgingRate>100</AgingRate>
-    <AgingStages>
-      <string>Mossy_Armor</string>
-      <string>Frozen_Armor</string>
-    </AgingStages>
-  </Planet>
-  <Planet>
-    <PlanetNameContains>Pertam</PlanetNameContains>
-    <AgingRate>60</AgingRate>
-    <AgingStages>
-      <string>Dust_Armor</string>
-      <string>Rusty_Armor</string>
-      <string>Heavy_Rust_Armor</string>
-    </AgingStages>
-  </Planet>
-  <Planet>
-    <PlanetNameContains>Venus</PlanetNameContains>
-    <AgingRate>50</AgingRate>
-  </Planet>
-</Planets>
-<BlockSubtypeContainsBlackList>
-  <string>Concrete</string>
-  <string>Wood</string>
-</BlockSubtypeContainsBlackList>
+  <OnlyAgedUnpoweredGrids>false</OnlyAgedUnpoweredGrids>
+  <AgingDamagesBlocks>false</AgingDamagesBlocks>
+  <NoMercy>false</NoMercy>
+  <Planets>
+    <Planet>
+      <PlanetNameContains>Earth</PlanetNameContains>
+      <AgingRate>300</AgingRate>
+      <OnlyAgedUnpoweredGrids>true</OnlyAgedUnpoweredGrids>
+    </Planet>
+    <Planet>
+      <PlanetNameContains>Alien</PlanetNameContains>
+      <AgingRate>180</AgingRate>
+      <AgingStages>
+        <string>Mossy_Armor</string>
+        <string>Rusty_Armor</string>
+        <string>Heavy_Rust_Armor</string>
+      </AgingStages>
+    </Planet>
+    <Planet>
+      <PlanetNameContains>Triton</PlanetNameContains>
+      <AgingRate>100</AgingRate>
+      <AgingStages>
+        <string>Mossy_Armor</string>
+        <string>Frozen_Armor</string>
+      </AgingStages>
+    </Planet>
+    <Planet>
+      <PlanetNameContains>Pertam</PlanetNameContains>
+      <AgingRate>60</AgingRate>
+      <AgingStages>
+        <string>Dust_Armor</string>
+        <string>Rusty_Armor</string>
+        <string>Heavy_Rust_Armor</string>
+      </AgingStages>
+    </Planet>
+    <Planet>
+      <PlanetNameContains>Venus</PlanetNameContains>
+      <AgingRate>50</AgingRate>
+    </Planet>
+  </Planets>
+  <BlockSubtypeContainsBlackList>
+    <string>Concrete</string>
+    <string>Wood</string>
+  </BlockSubtypeContainsBlackList>
 ```
 
 ### Parâmetros
