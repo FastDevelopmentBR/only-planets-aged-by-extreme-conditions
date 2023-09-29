@@ -1,36 +1,32 @@
-Os blocos envelhecerão lentamente com o tempo enquanto estiverem na atmosfera de planetas configurados.
-
-Todos os blocos que não estejam cobertos por outros blocos ou espaços herméticos em todas as direções serão afetados pela envelhecimento.
-
-Por padrão, os planetas Terra, Alien, Pertam e Vênus (que é qualquer planeta modificado que tenha "Vênus" em seu nome) são configurados.
-
-As grids dentro de SafeZones com dano desativado não envelhecerão.
-
-Scripts apenas do lado do servidor! (Deve funcionar em servidores dedicados Xbox, mas não testado)
-
-*!!AVISO!! Este mod ainda é um tanto experimental. Bugs são esperados, por favor reporte se encontrados. Tenha também cuidado ao adicionar isso ao seu mundo já construído sem salvamentos de backup.*
+<p>Os blocos envelhecerão lentamente com o tempo enquanto estiverem na atmosfera de planetas configurados.</p>
+<p>Todos os blocos que não estejam cobertos por outros blocos ou espaços herméticos em todas as direções serão afetados pela envelhecimento.</p>
+<p>Por padrão, os planetas Terra, Alien, Pertam e Vênus (que é qualquer planeta modificado que tenha "Vênus" em seu nome) são configurados.</p>
+<p>As grids dentro de SafeZones com dano desativado não envelhecerão.</p>
+<p>Scripts apenas do lado do servidor! (Deve funcionar em servidores dedicados Xbox, mas não testado)</p>
+<br/>
+<p>*!!AVISO!! Este mod ainda é um tanto experimental. Bugs são esperados, por favor reporte se encontrados. Tenha também cuidado ao adicionar isso ao seu mundo já construído sem salvamentos de backup.*</p>
 
 ## F.A.Q
 
 * Como evitar que um bloco envelhecido se deteriore?
-Aplique uma textura que não esteja na lista de estágios de deterioração do planeta onde você se encontra, antes que sua grid começe a tomar dano.
+<p>Aplique uma textura que não esteja na lista de estágios de deterioração do planeta onde você se encontra, antes que sua grid começe a tomar dano.</p>
 
 * O clima influencia na deterioração?
-Não. Os efeitos climáticos não foram implementados, pelo mod usado como referência e eu também não implementei ainda para tentar manter uma boa performance no jogo.
+<p>Não. Os efeitos climáticos não foram implementados, pelo mod usado como referência e eu também não implementei ainda para tentar manter uma boa performance no jogo.</p>
 
 ## Configuração
 
-Este mod pode ser configurado por jogo salvo:
-
-Crie e salve o jogo com este mod adicionado.
-Abra o diretório de armazenamento do seu save:
+<p>Este mod pode ser configurado por jogo salvo:</p>
+<br/>
+<p>Crie e salve o jogo com este mod adicionado.</p>
+<p>Abra o diretório de armazenamento do seu save:</p>
 `C:\Users\<UserName>\AppData\Roaming\SpaceEngineers\Saves\<RandomNumber>\<SaveGameName>\Storage\<RandomNumber>.sbm_ExtremeConditions`
-O arquivo **config.xml** está dentro da pasta, contendo uma configuração padrão. 
-**Certifique-se de editar a versão mais recente se houver mais de uma!**
-Também é necessário reconfigurar sempre que o mod for atualizado com alterações nas opções de configuração.
-Utilize o editor de texto da sua preferência.
-
-Você verá a seguinte configuração padrão:
+<p>O arquivo **config.xml** está dentro da pasta, contendo uma configuração padrão.</p>
+<p>**Certifique-se de editar a versão mais recente se houver mais de uma!**</p>
+<p>Também é necessário reconfigurar sempre que o mod for atualizado com alterações nas opções de configuração.</p>
+<p>Utilize o editor de texto da sua preferência.</p>
+<br/>
+<p>Você verá a seguinte configuração padrão:</p>
 ```
 <OnlyAgedUnpoweredGrids>false</OnlyAgedUnpoweredGrids>
 <AgingDamagesBlocks>false</AgingDamagesBlocks>
@@ -112,16 +108,16 @@ Ships in screenshots:
 
 ## Relatando Problemas
 
-Por favor, relate quaisquer problemas que encontrar para ajudar a melhorar este mod.
-Ao relatar, tenha o cuidado de fornecer todas as informações possíveis, para que eu possa depurar e corrigir.
-
-Estas são as informações mínimas necessárias ao relatar um problema:
-
+<p>Por favor, relate quaisquer problemas que encontrar para ajudar a melhorar este mod.</p>
+<p>Ao relatar, tenha o cuidado de fornecer todas as informações possíveis, para que eu possa depurar e corrigir.</p>
+<br/>
+<p>Estas são as informações mínimas necessárias ao relatar um problema:</p>
+<br/>
 - Lista de todos os mods usados em um jogo na ordem exata (faça uma captura de tela do menu de mods do jogo salvo)
 - Registro mais recente, logo após o problema ou falha. O registro está localizado:
 `"C:\Users\<UserName>\AppData\Roaming\SpaceEngineers\SpaceEngineers_<datetime>.log"`
 - Captura de tela do problema se estiver visível no jogo
-
-Forneça quaisquer informações/detalhes adicionais que possam ajudar.
-
-Use serviços online como Imgur, pastebin ou outros para compartilhar: capturas de tela, logs, etc.
+<br/>
+<p>Forneça quaisquer informações/detalhes adicionais que possam ajudar.</p>
+<br/>
+<p>Use serviços online como Imgur, pastebin ou outros para compartilhar: capturas de tela, logs, etc.</p>
