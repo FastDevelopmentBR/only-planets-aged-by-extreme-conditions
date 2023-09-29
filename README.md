@@ -83,11 +83,11 @@ C:\Users\<UserName>\AppData\Roaming\SpaceEngineers\Saves\<RandomNumber>\<SaveGam
 | OnlyAgedUnpoweredGrids | boolean | false |
 | AgingDamagesBlocks | boolean | false |
 | NoMercy | boolean | false |
-| Planets | List<Planet> | null |
+| Planets | List&lt;Planet&gt; | null |
 | PlanetNameContains | string | null |
 | AgingRate | number | null |
-| AgingStages | List<string> | ["Rust_Armor", "Heavy_Rust_Armor"] |
-| BlockSubtypeContainsBlackList | List<string> | ["Concrete", "Wood"] |
+| AgingStages | List&lt;string&gt; | ["Rust_Armor", "Heavy_Rust_Armor"] |
+| BlockSubtypeContainsBlackList | List&lt;string&gt; | ["Concrete", "Wood"] |
 
 - OnlyAgedUnpoweredGrids - Se definido como verdadeiro, envelhecerá apenas grades sem energia (abandonadas).
 - AgingDamagesBlocks - Os blocos começaram a sofrer dano após atingir o último estágio de envelhecimento. Se estiver desligado (false), apenas a texture será afetada.
