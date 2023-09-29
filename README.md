@@ -78,6 +78,17 @@ C:\Users\<UserName>\AppData\Roaming\SpaceEngineers\Saves\<RandomNumber>\<SaveGam
 
 ### Parâmetros
 
+| Name | Type | Default |
+| ---- | :--: | :-----: |
+| OnlyAgedUnpoweredGrids | boolean | false |
+| AgingDamagesBlocks | boolean | false |
+| NoMercy | boolean | false |
+| Planets | List<Planet> | null |
+| PlanetNameContains | string | null |
+| AgingRate | number | null |
+| AgingStages | List<string> | ["Rust_Armor", "Heavy_Rust_Armor"] |
+| BlockSubtypeContainsBlackList | List<string> | ["Concrete", "Wood"] |
+
 - OnlyAgedUnpoweredGrids - Se definido como verdadeiro, envelhecerá apenas grades sem energia (abandonadas).
 - AgingDamagesBlocks - Os blocos começaram a sofrer dano após atingir o último estágio de envelhecimento. Se estiver desligado (false), apenas a texture será afetada.
 - NoMercy - Independente de AgingDamagesBlocks estar habilitado, se NoMercy estiver desabilitado, o mod protegerá os RespawnShips do dano por envelhecimento, afetando apenas a textura.
