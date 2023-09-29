@@ -89,25 +89,25 @@ C:\Users\<UserName>\AppData\Roaming\SpaceEngineers\Saves\<RandomNumber>\<SaveGam
 | AgingStages | List&lt;string&gt; | ["Rust_Armor", "Heavy_Rust_Armor"] |
 | BlockSubtypeContainsBlackList | List&lt;string&gt; | ["Concrete", "Wood"] |
 
-- OnlyAgedUnpoweredGrids
+#### OnlyAgedUnpoweredGrids
 Se definido como verdadeiro, envelhecerá apenas grades sem energia (abandonadas).
 
-- AgingDamagesBlocks
+#### AgingDamagesBlocks
 Os blocos começaram a sofrer dano após atingir o último estágio de envelhecimento. Se estiver desligado (false), apenas a texture será afetada.
 
-- NoMercy
+#### NoMercy
 Independente de AgingDamagesBlocks estar habilitado, se NoMercy estiver desabilitado, o mod protegerá os RespawnShips do dano por envelhecimento, afetando apenas a textura.
 
-- Planets
-Planetas vanilla ou modded podem ser adicionados a lista, PlanetNameContains servirá para encontrar qualquer planeta que contenha o nome citado. 
+#### Planets
+Planetas vanilla ou modded podem ser adicionados a lista, PlanetNameContains servirá para encontrar qualquer planeta que contenha o nome citado.
 
-- AgingRate
+#### AgingRate
 Taxa de envelhecimento, não é precisa, mas quanto menor, mais rápido (e mais lag pode gerar no seu server).
 
-- AgingStages
-Lista de estágios de envelhecimento, caso não definida na configuração utilizará "Rusty_Armor" e "Heavy_Rust_Armor" (nessa ordem). 
+#### AgingStages
+Lista de estágios de envelhecimento, caso não definida na configuração utilizará "Rusty_Armor" e "Heavy_Rust_Armor" (nessa ordem).
 
-- BlockSubtypeContainsBlackList
+#### BlockSubtypeContainsBlackList
 Blocos cujo subtipo contém qualquer string desta lista, não sofrerá de envelhecimento.
 
 <!-- 
