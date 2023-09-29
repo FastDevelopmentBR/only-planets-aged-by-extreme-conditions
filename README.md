@@ -1,10 +1,10 @@
-Os blocos envelhecerão lentamente com o tempo enquanto estiverem na atmosfera de planetas configurados.
-Todos os blocos que não estejam cobertos por outros blocos ou espaços herméticos em todas as direções serão afetados pela envelhecimento.
-Por padrão, os planetas Terra, Alien, Pertam e Vênus (que é qualquer planeta modificado que tenha "Vênus" em seu nome) são configurados.
-As grids dentro de SafeZones com dano desativado não envelhecerão.
-Scripts apenas do lado do servidor! (Deve funcionar em servidores dedicados Xbox, mas não testado)
-
-*!!AVISO!! Este mod ainda é um tanto experimental. Bugs são esperados, por favor reporte se encontrados. Tenha também cuidado ao adicionar isso ao seu mundo já construído sem salvamentos de backup.*
+<p>Os blocos envelhecerão lentamente com o tempo enquanto estiverem na atmosfera de planetas configurados.</p>
+<p>Todos os blocos que não estejam cobertos por outros blocos ou espaços herméticos em todas as direções serão afetados pela envelhecimento.</p>
+<p>Por padrão, os planetas Terra, Alien, Pertam e Vênus (que é qualquer planeta modificado que tenha "Vênus" em seu nome) são configurados.</p>
+<p>As grids dentro de SafeZones com dano desativado não envelhecerão.</p>
+<p>Scripts apenas do lado do servidor! (Deve funcionar em servidores dedicados Xbox, mas não testado)</p>
+<br/>
+<p><em>!!AVISO!! Este mod ainda é um tanto experimental. Bugs são esperados, por favor reporte se encontrados. Tenha também cuidado ao adicionar isso ao seu mundo já construído sem salvamentos de backup.*</em></p>
 
 ## F.A.Q
 
