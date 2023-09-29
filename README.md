@@ -119,14 +119,9 @@ Estas são as informações mínimas necessárias ao relatar um problema:
 
 - Lista de todos os mods usados em um jogo na ordem exata (faça uma captura de tela do menu de mods do jogo salvo)
 - Registro mais recente, logo após o problema ou falha. O registro está localizado:
-    `"C:\Users\<UserName>\AppData\Roaming\SpaceEngineers\SpaceEngineers_<datetime>.log"`
+`"C:\Users\<UserName>\AppData\Roaming\SpaceEngineers\SpaceEngineers_<datetime>.log"`
 - Captura de tela do problema se estiver visível no jogo
 
 Forneça quaisquer informações/detalhes adicionais que possam ajudar.
 
-Use serviços online como Imgur, pastebin ou outros para compartilhar capturas de tela / logs / etc.
-
-### Github
-
-Qualquer ajuda para manter/melhorar este mod é bem-vinda, aqui está o repositório Github com o código:
-https://github.com/FastDevelopmentBR/only-planets-aged-by-extreme-conditions
+Use serviços online como Imgur, pastebin ou outros para compartilhar: capturas de tela, logs, etc.
