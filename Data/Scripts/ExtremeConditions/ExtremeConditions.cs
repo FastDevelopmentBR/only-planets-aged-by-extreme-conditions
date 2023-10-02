@@ -19,10 +19,10 @@ using VRageMath;
 
 namespace ExtremeConditions
 {
-	public struct RustyPlanet
+	public struct AgedPlanet
 	{
 		public MyPlanet MyPlanet;
-		public double RustProbability;
+		public double AgingProbability;
 		public bool OnlyAgedUnpoweredGrids;
 		public HashSet<MyStringHash> AgingStages { get; set; }
 	}
@@ -30,13 +30,13 @@ namespace ExtremeConditions
 	[MySessionComponentDescriptor(MyUpdateOrder.BeforeSimulation)]
 	public class ExtremeConditions : MySessionComponentBase
 	{
-		private const int UPDATE_RATE = 3600; //rust will apply every 1 minute
-		private const float RUST_DAMAGE = 0.5f;
+		private const int UPDATE_RATE = 3600; //aging will apply every 1 minute
+		private const float AGING_DAMAGE = 0.5f;
 		private const bool DEBUG = false;
 
 		private readonly Random _random = new Random();
 		private bool _init;
-		private HashSet<RustyPlanet> _planets = new HashSet<RustyPlanet>();
+		private HashSet<AgedPlanet> _planets = new HashSet<AgedPlanet>();
 		private int _updateCount = 0;
 		private bool _processing;
 		private Queue<Action> _slowQueue = new Queue<Action>();
@@ -78,8 +78,28 @@ namespace ExtremeConditions
 			}
 			catch (Exception e)
 			{
-				Echo("RUST Mechanics UpdateBeforeSimulation exception: " + e + e.InnerException);
+				Echo("Aged By Extreme Conditions UpdateBeforeSimulation exception: " + e + e.InnerException);
 			}
+		}
+
+		private int GetRandomIndex(int listCount)
+		{
+			if (listCount == 0) return 0;
+			var randomNumberInRange = _random.Next(listCount);
+			return (randomNumberInRange != 0) ? --randomNumberInRange : 0;
+		}
+
+		private bool IsBlackListedSkin(string blockSkin)
+		{
+			foreach (var blackListItem in Config.agingConfig.BlockSubtypeContainsBlackList)
+			{
+				var blackListed = blockSkin.Contains(blackListItem);
+				// Echo("blackListItem: " + blackListItem + ". SkinSubtypeId: " + blockSkin + ". Blacklisted? " + blackListed.ToString());
+				if (blackListed)
+					return true;
+			}
+
+			return false;
 		}
 
 		private void ProcessDamage()
@@ -91,12 +111,11 @@ namespace ExtremeConditions
 					var sphere = new BoundingSphereD(planet.MyPlanet.PositionComp.GetPosition(), planet.MyPlanet.AverageRadius + planet.MyPlanet.AtmosphereAltitude);
 
 					var topEntities = MyAPIGateway.Entities.GetTopMostEntitiesInSphere(ref sphere);
-					var entitiesDamaged = 0;
+					var entitiesAffected = 0;
 
 					do
 					{
-						var randomEntityIndex = _random.Next((topEntities.Count - 1));
-						var selectedEntity = topEntities.ElementAt(randomEntityIndex);
+						var selectedEntity = topEntities.ElementAt(GetRandomIndex(topEntities.Count));
 
 						var grid = selectedEntity as IMyCubeGrid;
 						if (grid?.Physics != null)
@@ -106,7 +125,7 @@ namespace ExtremeConditions
 							if (gridInternal.Closed || gridInternal.MarkedForClose)
 								continue;
 
-							if (Config.rustConfig.OnlyAgedUnpoweredGrids && gridInternal.IsPowered)
+							if (Config.agingConfig.OnlyAgedUnpoweredGrids && gridInternal.IsPowered)
 							{
 								if (planet.OnlyAgedUnpoweredGrids)
 									continue;
@@ -124,45 +143,57 @@ namespace ExtremeConditions
 							var blocks = new List<IMySlimBlock>();
 							grid.GetBlocks(blocks);
 
-							var gridBlockAged = false;
 							var dmgTries = 0;
 
 							do
 							{
-								if (blocks.Count <= 5 && dmgTries == blocks.Count)
+								if (dmgTries == blocks.Count)
 									break;
 
-								var blockIndex = (blocks.Count <= 5) ? dmgTries : _random.Next((blocks.Count - 1));
+								var blockIndex = (blocks.Count < 5) ? dmgTries : GetRandomIndex(blocks.Count);
 								var selectedBlock = blocks.ElementAt(blockIndex);
+								dmgTries++;
 
-								if (_random.NextDouble() < planet.RustProbability &&
-									!Config.rustConfig.BlockSubtypeContainsBlackList.Any(selectedBlock.BlockDefinition.Id.SubtypeName.Contains) &&
-									HasOpenFaces(selectedBlock, grid, blocks.Count))
+								var blockTypeBlacklisted = IsBlackListedSkin(selectedBlock.SkinSubtypeId.String);
+
+								if (blockTypeBlacklisted)
+									continue;
+
+								if ((_random.NextDouble() < planet.AgingProbability)
+									&& HasOpenFaces(selectedBlock, grid, blocks.Count))
 								{
-									if (selectedBlock.SkinSubtypeId == planet.AgingStages.Last() && Config.rustConfig.AgingDamagesBlocks)
+									if (selectedBlock.SkinSubtypeId == planet.AgingStages.Last())
 									{
-										if (!Config.rustConfig.NoMercy && gridInternal.IsRespawnGrid)
+										if (!Config.agingConfig.AgingDamagesBlocks)
+											continue;
+
+										if (!Config.agingConfig.NoMercy && gridInternal.IsRespawnGrid)
 											continue;
 
 										_slowQueue.Enqueue(() => DamageBlock(selectedBlock, gridInternal));
 									}
 									else
 									{
-										_slowQueue.Enqueue(() => RustBlockPaint(selectedBlock, gridInternal, planet.AgingStages));
+										_slowQueue.Enqueue(() => AgingBlockPaint(selectedBlock, gridInternal, planet.AgingStages));
 									}
 
-									gridBlockAged = true;
-									entitiesDamaged++;
+									entitiesAffected++;
+									break;
 								}
-								dmgTries++;
-							} while ((gridBlockAged == false) || ((blocks.Count <= 5) && (dmgTries < blocks.Count)) || ((blocks.Count > 5) && (dmgTries <= 5)));
+
+								if (dmgTries == 5)
+									break;
+							} while (dmgTries < blocks.Count);
 						}
-					} while (entitiesDamaged < 5);
+
+						if (entitiesAffected == 5)
+							break;
+					} while (entitiesAffected < topEntities.Count);
 				}
 			}
 			catch (Exception e)
 			{
-				Echo("RUST Mechanics ProcessDamage exception: " + e + e.InnerException);
+				Echo("Aged By Extreme Conditions Mechanics ProcessDamage exception: " + e + e.InnerException);
 			}
 			finally
 			{
@@ -184,7 +215,7 @@ namespace ExtremeConditions
 			foreach (var entitiy in entities)
 			{
 				MyPlanet myPlanet = (MyPlanet)entitiy;
-				foreach (var planetConfig in Config.rustConfig.Planets)
+				foreach (var planetConfig in Config.agingConfig.Planets)
 				{
 					if (myPlanet.StorageName.Contains(planetConfig.PlanetNameContains))
 					{
@@ -205,11 +236,11 @@ namespace ExtremeConditions
 							};
 						}
 
-						_planets.Add(new RustyPlanet()
+						_planets.Add(new AgedPlanet()
 						{
 							MyPlanet = myPlanet,
 							//3600 - game ticks per minute
-							RustProbability = UPDATE_RATE / (3600 * planetConfig.AgingRate),
+							AgingProbability = UPDATE_RATE / (3600 * planetConfig.AgingRate),
 							OnlyAgedUnpoweredGrids = planetConfig.OnlyAgedUnpoweredGrids,
 							AgingStages = planetAgingStages
 						});
@@ -286,7 +317,7 @@ namespace ExtremeConditions
 
 		public static T CastHax<T>(T typeRef, object castObj) => (T)castObj;
 
-		private void RustBlockPaint(IMySlimBlock block, MyCubeGrid gridInternal, HashSet<MyStringHash> agingStages)
+		private void AgingBlockPaint(IMySlimBlock block, MyCubeGrid gridInternal, HashSet<MyStringHash> agingStages)
 		{
 			MyCube myCube;
 			gridInternal.TryGetCube(block.Position, out myCube);
@@ -297,11 +328,11 @@ namespace ExtremeConditions
 
 			for (int i = 0; i < agingStages.Count; i++)
 			{
-				if (block.SkinSubtypeId == agingStages.ElementAt(i))
+				if (block.SkinSubtypeId == agingStages.ElementAt(i) && block.SkinSubtypeId != agingStages.Last())
 					nextAgingState = ++i;
 			}
 
-			Echo(gridInternal.Name + " - Go to Next Rust Stage.", "NEW_AGING_STAGE = " + agingStages.ElementAt(nextAgingState));
+			Echo(gridInternal.Name + " - Go to Next Aging Stage.", "NEW_AGING_STAGE = " + agingStages.ElementAt(nextAgingState));
 			gridInternal.ChangeColorAndSkin(myCube.CubeBlock, skinSubtypeId: agingStages.ElementAt(nextAgingState));
 		}
 
@@ -316,8 +347,8 @@ namespace ExtremeConditions
 			}
 			else
 			{
-				block?.DecreaseMountLevel(RUST_DAMAGE, null, true);
-				Echo(gridInternal.Name + " - DecreaseMountLevel.", "RUST_DAMAGE = " + RUST_DAMAGE);
+				block?.DecreaseMountLevel(AGING_DAMAGE, null, true);
+				Echo(gridInternal.Name + " - DecreaseMountLevel.", "AGING_DAMAGE = " + AGING_DAMAGE);
 			}
 		}
 
@@ -348,13 +379,13 @@ namespace ExtremeConditions
 					}
 					catch (Exception e)
 					{
-						Echo("RUST Mechanics InvokeOnGameThread exception: " + e + e.InnerException);
+						Echo("Age by Extreme Conditions InvokeOnGameThread exception: " + e + e.InnerException);
 					}
 				});
 			}
 			catch (Exception e)
 			{
-				Echo("RUST Mechanics SafeInvoke exception: " + e + e.InnerException);
+				Echo("Aged By Extreme Conditions SafeInvoke exception: " + e + e.InnerException);
 			}
 		}
 

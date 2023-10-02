@@ -15,7 +15,7 @@ namespace ExtremeConditions
 		public List<string> AgingStages;
 	}
 
-	public struct RustConfig
+	public struct AgingConfig
 	{
 		public bool OnlyAgedUnpoweredGrids;
 		public bool AgingDamagesBlocks;
@@ -27,7 +27,7 @@ namespace ExtremeConditions
 	[MySessionComponentDescriptor(MyUpdateOrder.AfterSimulation)]
 	public class Config : MySessionComponentBase
 	{
-		public static RustConfig rustConfig = new RustConfig()
+		public static AgingConfig agingConfig = new AgingConfig()
 		{
 			OnlyAgedUnpoweredGrids = false,
 			AgingDamagesBlocks = false,
@@ -85,17 +85,17 @@ namespace ExtremeConditions
 			try
 			{
 				string configFileName = "config.xml";
-				if (MyAPIGateway.Utilities.FileExistsInWorldStorage(configFileName, typeof(RustConfig)))
+				if (MyAPIGateway.Utilities.FileExistsInWorldStorage(configFileName, typeof(AgingConfig)))
 				{
-					var textReader = MyAPIGateway.Utilities.ReadFileInWorldStorage(configFileName, typeof(RustConfig));
+					var textReader = MyAPIGateway.Utilities.ReadFileInWorldStorage(configFileName, typeof(AgingConfig));
 					var configXml = textReader.ReadToEnd();
 					textReader.Close();
-					rustConfig = MyAPIGateway.Utilities.SerializeFromXML<RustConfig>(configXml);
+					agingConfig = MyAPIGateway.Utilities.SerializeFromXML<AgingConfig>(configXml);
 				}
 				else
 				{
-					var textWriter = MyAPIGateway.Utilities.WriteFileInWorldStorage(configFileName, typeof(RustConfig));
-					textWriter.Write(MyAPIGateway.Utilities.SerializeToXML(rustConfig));
+					var textWriter = MyAPIGateway.Utilities.WriteFileInWorldStorage(configFileName, typeof(AgingConfig));
+					textWriter.Write(MyAPIGateway.Utilities.SerializeToXML(agingConfig));
 					textWriter.Flush();
 					textWriter.Close();
 				}
