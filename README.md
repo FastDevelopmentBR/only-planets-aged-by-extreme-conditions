@@ -3,8 +3,15 @@
 <p>Por padrão, os planetas Terra, Alien, Pertam e Vênus (que é qualquer planeta modificado que tenha "Vênus" em seu nome) são configurados.</p>
 <p>As grids dentro de SafeZones com dano desativado não envelhecerão.</p>
 <p>Scripts apenas do lado do servidor! (Deve funcionar em servidores dedicados Xbox, mas não testado)</p>
-<br/>
-<p><em>!!AVISO!! Este mod ainda é um tanto experimental. Bugs são esperados, por favor reporte se encontrados. Tenha também cuidado ao adicionar isso ao seu mundo já construído sem salvamentos de backup.</em></p>
+
+## Notas Importantes
+
+### Recrie seu arquivo de configuração
+* Se você já utilizava o mod desde a versão 1.0 (29/09/2023), caso queira customizar a configuração ou perceba que algo configurado (não default) está ocorrendo diferente do esperado, remova o arquivo de configurações e deixe que ele gere um novo arquivo ao ligar o seu save novamente (ou reiniciar o servidor).
+```Algumas nomenclaturas foram alteradas para distinguir do Mod de origem (Rust Mechanics) e isso afetou o acesso ao xml de configuração da versão anterior.```
+
+### MOD Experimental
+* Este mod ainda é um tanto experimental. Bugs são esperados, por favor reporte se encontrados. Tenha também cuidado ao adicionar isso ao seu mundo já construído sem salvamentos de backup.
 
 ## F.A.Q
 
