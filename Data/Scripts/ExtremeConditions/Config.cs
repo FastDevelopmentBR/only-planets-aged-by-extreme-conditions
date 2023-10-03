@@ -7,11 +7,18 @@ using VRage.Game.Components;
 
 namespace ExtremeConditions
 {
+	public struct ExtraProtectionStage
+	{
+		public string OriginStage;
+		public string NextStage;
+	}
+
 	public struct Planet
 	{
 		public string PlanetNameContains;
 		public double AgingRate;
 		public bool OnlyAgedUnpoweredGrids;
+		public List<ExtraProtectionStage> ExtraProtectionStages;
 		public List<string> AgingStages;
 	}
 
@@ -52,6 +59,11 @@ namespace ExtremeConditions
 				new Planet {
 					PlanetNameContains = "Triton",
 					AgingRate = 100,
+					ExtraProtectionStages = new List<ExtraProtectionStage>()
+					{
+						new ExtraProtectionStage { OriginStage = "Battered_Armor", NextStage = "" },
+						new ExtraProtectionStage { OriginStage = "Clean_Armor", NextStage = "" },
+					},
 					AgingStages = new List<string>()
 					{
 						"Mossy_Armor",
@@ -61,6 +73,14 @@ namespace ExtremeConditions
 				new Planet {
 					PlanetNameContains = "Pertam",
 					AgingRate = 60,
+					ExtraProtectionStages = new List<ExtraProtectionStage>()
+					{
+						new ExtraProtectionStage { OriginStage = "Battered_Armor", NextStage = "" },
+						new ExtraProtectionStage { OriginStage = "Clean_Armor", NextStage = "" },
+						new ExtraProtectionStage { OriginStage = "Silver_Armor", NextStage = "" },
+						new ExtraProtectionStage { OriginStage = "Frozen_Armor", NextStage = "Mossy_Armor" },
+						new ExtraProtectionStage { OriginStage = "Mossy_Armor", NextStage = "" },
+					},
 					AgingStages = new List<string>()
 					{
 						"Dust_Armor",
