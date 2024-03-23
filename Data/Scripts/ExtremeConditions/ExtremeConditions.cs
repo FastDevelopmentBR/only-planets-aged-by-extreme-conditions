@@ -80,7 +80,7 @@ namespace ExtremeConditions
 			}
 			catch (Exception e)
 			{
-				Echo("Aged By Extreme Conditions UpdateBeforeSimulation exception: " + e + e.InnerException);
+				Echo("UpdateBeforeSimulation exception: " + e + e.InnerException);
 			}
 		}
 
@@ -121,6 +121,8 @@ namespace ExtremeConditions
 								var entity = grids.ElementAt(entitiesAffected);
 								var grid = entity as IMyCubeGrid;
 
+								entitiesAffected++;
+
 								if (grid != null)
 								{
 									MyCubeGrid gridInternal = (MyCubeGrid)grid;
@@ -156,7 +158,8 @@ namespace ExtremeConditions
 										while (blocksAffected < maxBlocksAffected)
 										{
 											var block = blocks.ElementAt(blocksAffected);
-											
+											blocksAffected++;
+
 											if (IsBlackListedSkin(block.SkinSubtypeId.String))
 												continue;
 
@@ -178,13 +181,9 @@ namespace ExtremeConditions
 													_slowQueue.Enqueue(() => AgingBlockPaint(block, gridInternal, planet));
 												}
 											}
-
-											blocksAffected++;
 										}
 									}
 								}
-
-								entitiesAffected++;
 							}
 						}
 					}
@@ -192,7 +191,7 @@ namespace ExtremeConditions
 			}
 			catch (Exception e)
 			{
-				Echo("Aged By Extreme Conditions Mechanics ProcessDamage exception: " + e + e.InnerException);
+				Echo("ProcessDamage exception: " + e + e.InnerException);
 			}
 			finally
 			{
@@ -266,9 +265,10 @@ namespace ExtremeConditions
 					}
 				}
 
-				if (_planets.Count > 0)
-					Echo("Configuration", "Initialized");
 			}
+
+			if (_planets.Count > 0)
+				Echo("Configuration", "Initialized");
 		}
 
 		private bool HasOpenFaces(IMySlimBlock block, IMyCubeGrid grid, int blocksInGrid)
@@ -356,7 +356,7 @@ namespace ExtremeConditions
 
 				if (stageFound)
 				{
-					Echo(gridInternal.Name + " - Decreasing Extra Protection.", "NEW_STAGE = " + (nextStage.String == "" ? "Default" : nextStage.String));
+					Echo(gridInternal.Name + " - Decreasing Extra Protection", "NEW_STAGE = " + (nextStage.String == "" ? "Default" : nextStage.String));
 					gridInternal.ChangeColorAndSkin(myCube.CubeBlock, skinSubtypeId: nextStage);
 				}
 
@@ -366,7 +366,7 @@ namespace ExtremeConditions
 			// Apply Aging Stage
 			if (block.SkinSubtypeId == planetConfig.AgingStages.Last())
 			{
-				Echo(gridInternal.Name + " - Block at Maximum Aging Stage.");
+				Echo(gridInternal.Name + " - Block at Maximum Aging Stage");
 			}
 			else
 			{
@@ -380,7 +380,7 @@ namespace ExtremeConditions
 
 				var nextAgingStage = planetConfig.AgingStages.ElementAt(nextAgingStageIndex);
 
-				Echo(gridInternal.Name + " - Go to Next Aging Stage.", "NEW_AGING_STAGE = " + nextAgingStage);
+				Echo(gridInternal.Name + " - Go to Next Aging Stage", "NEW_AGING_STAGE = " + nextAgingStage);
 				gridInternal.ChangeColorAndSkin(myCube.CubeBlock, skinSubtypeId: nextAgingStage);
 			}
 		}
@@ -397,7 +397,7 @@ namespace ExtremeConditions
 			else
 			{
 				block?.DecreaseMountLevel(AGING_DAMAGE, null, true);
-				Echo(gridInternal.Name + " - DecreaseMountLevel.", "AGING_DAMAGE = " + AGING_DAMAGE);
+				Echo(gridInternal.Name + " - DecreaseMountLevel", "AGING_DAMAGE = " + AGING_DAMAGE);
 			}
 		}
 
@@ -428,19 +428,19 @@ namespace ExtremeConditions
 					}
 					catch (Exception e)
 					{
-						Echo("Age by Extreme Conditions InvokeOnGameThread exception: " + e + e.InnerException);
+						Echo("InvokeOnGameThread exception: " + e + e.InnerException);
 					}
 				});
 			}
 			catch (Exception e)
 			{
-				Echo("Aged By Extreme Conditions SafeInvoke exception: " + e + e.InnerException);
+				Echo("SafeInvoke exception: " + e + e.InnerException);
 			}
 		}
 
 		private static void Echo(string msg1, object msg2 = null)
 		{
-			MyLog.Default.WriteLineAndConsole(msg1 + ": " + msg2);
+			MyLog.Default.WriteLineAndConsole("Aged By Extreme Conditions - " + msg1 + ": " + msg2);
 			if (DEBUG)
 			{
 				MyAPIGateway.Utilities.ShowMessage(msg1, msg2?.ToString());
